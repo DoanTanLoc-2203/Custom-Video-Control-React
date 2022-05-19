@@ -51,6 +51,11 @@ const VideoFooter: React.FC<Props> = ({
     handleChangeVolumn(Number(event.target.value));
   };
 
+  useEffect(() => {
+    console.log("sliderDuration", sliderDuration);
+    console.log("sliderCurrentTime", sliderCurrentTime);
+  });
+
   const onHoverGetSecond = (
     event: React.MouseEvent<HTMLInputElement, MouseEvent>,
   ) => {
@@ -114,7 +119,7 @@ const VideoFooter: React.FC<Props> = ({
         className="video__footer__slider"
         min={0}
         max={sliderDuration}
-        step="1"
+        step="0.001"
         value={sliderCurrentTime}
         onChange={handleChangeTimeValue}
         onMouseMove={onHoverGetSecond}
