@@ -42,6 +42,10 @@ const VideoFooter: React.FC<Props> = ({
   const imageRef = useRef<HTMLImageElement>(null!);
   const [posX, setPosX] = useState(0);
   const [isPreview, setIsPreview] = useState(false);
+  const isMobile =
+    /Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+      navigator.userAgent,
+    );
 
   const onVolumn = (event: React.ChangeEvent<HTMLInputElement>) => {
     handleChangeVolumn(Number(event.target.value));
@@ -88,20 +92,22 @@ const VideoFooter: React.FC<Props> = ({
 
   return (
     <div className={`video__footer ${className}`} style={style}>
-      <img
-        alt=""
-        ref={imageRef}
-        style={{
-          border: "2px solid white",
-          zIndex: isPreview ? "10" : "-1",
-          transition: "opacity 0.4s",
-          position: "absolute",
-          width: "200px",
-          height: "auto",
-          bottom: "80px",
-          left: posX,
-        }}
-      />
+      {!isMobile && (
+        <img
+          alt=""
+          ref={imageRef}
+          style={{
+            border: "2px solid white",
+            opacity: isPreview ? "1" : "0",
+            transition: "opacity 0.4s",
+            position: "absolute",
+            width: "200px",
+            height: "auto",
+            bottom: "80px",
+            left: posX,
+          }}
+        />
+      )}
       <input
         ref={rangeRef}
         type="range"

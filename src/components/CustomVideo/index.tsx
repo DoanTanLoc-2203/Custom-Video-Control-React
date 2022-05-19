@@ -49,6 +49,7 @@ const CustomVideo: React.FC<Props> = ({ url }) => {
   const handleChangeTimeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!videoRef.current) return;
     videoRef.current.currentTime = Number(e.target.value);
+    setCurrentTime(e.target.value);
   };
 
   const hanldeVideoPlayPause = () => {
