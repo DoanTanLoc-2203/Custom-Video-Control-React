@@ -20,21 +20,13 @@ const CustomVideo: React.FC<Props> = ({ url }) => {
   const [isMutedVideo, setMutedVideo] = useState(false);
   const [volumn, setVolumn] = useState(1);
 
-  // const showControl = React.useCallback(() => {
-  //   clearTimeout(timeOut.current!);
-  //   if (!isShowControlMenu) setShowControlMenu(true);
-  //   timeOut.current = setTimeout(() => {
-  //     setShowControlMenu(false);
-  //   }, 3000);
-  // }, [isShowControlMenu, isFullScreen]);
-
-  const moveShowControl = () => {
-    setShowControlMenu(true);
+  const showControl = React.useCallback(() => {
     clearTimeout(timeOut.current!);
-    timeOut.current = setTimeout(function () {
+    if (!isShowControlMenu) setShowControlMenu(true);
+    timeOut.current = setTimeout(() => {
       setShowControlMenu(false);
     }, 3000);
-  };
+  }, [isShowControlMenu, isFullScreen]);
 
   const getSliderDuration = () => {
     if (!videoRef.current || !videoRef.current.duration) return 0;
@@ -183,7 +175,7 @@ const CustomVideo: React.FC<Props> = ({ url }) => {
       className="video__wrapper"
       ref={videoWrapperRef}
       style={{ width: "100%" }}
-      onMouseMove={moveShowControl}
+      onMouseMove={showControl}
     >
       <video
         playsInline

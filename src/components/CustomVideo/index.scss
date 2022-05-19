@@ -30,6 +30,8 @@
       }
       &--right {
         padding: 0 15px;
+        display: flex;
+        align-items: center;
       }
     }
     &__slider {
@@ -80,6 +82,7 @@
     &__fullscreen {
       width: 30px;
       cursor: pointer;
+      margin: 0 15px;
       img {
         width: 100%;
       }

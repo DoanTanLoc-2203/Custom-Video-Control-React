@@ -178,6 +178,9 @@ const VideoFooter: React.FC<Props> = ({
           />
         </div>
         <div className="video__footer__control--right">
+          <a className="video__footer__fullscreen" href={videoPath} download>
+            <img src="/assets/img/svg/download.svg" />
+          </a>
           <p className="video__footer__fullscreen" onClick={hanldeFullScreen}>
             <img src="/assets/img/svg/expand.svg" />
           </p>
